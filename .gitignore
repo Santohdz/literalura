@@ -31,3 +31,38 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Archivos de compilación
+target/
+bin/
+*.class
+*.jar
+*.war
+*.ear
+
+# Archivos de configuración locales
+*.properties
+!src/main/resources/application-example.yml
+
+# Archivos de IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+.vscode/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+logs/
+
+# Archivos de base de datos
+*.db
+*.h2.db
+*.sql

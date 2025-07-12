@@ -1,28 +1,45 @@
 package com.literalura.dto;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AuthorDTO {
+
+    @JsonProperty("name")
     private String name;
-    private Integer birth_year;
-    private Integer death_year;
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    // Jackson convierte "birth_year" → birthYear
+    @JsonAlias("birth_year")
+    private Integer birthYear;
 
-    public Integer getBirth_year() { return birth_year; }
-    public void setBirth_year(Integer birth_year) { this.birth_year = birth_year; }
+    @JsonAlias("death_year")
+    private Integer deathYear;
 
-    public Integer getDeath_year() { return death_year; }
-    public void setDeath_year(Integer death_year) { this.death_year = death_year; }
+    // GETTERS y SETTERS
 
-    @Override
-    public String toString() {
-        return "AuthorDTO{" +
-                "name='" + name + '\'' +
-                ", birth_year=" + birth_year +
-                ", death_year=" + death_year +
-                '}';
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(Integer birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public Integer getDeathYear() {
+        return deathYear;
+    }
+
+    public void setDeathYear(Integer deathYear) {
+        this.deathYear = deathYear;
     }
 }

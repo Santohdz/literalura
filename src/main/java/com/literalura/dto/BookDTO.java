@@ -1,40 +1,56 @@
 package com.literalura.dto;
 
-import com.fasterxml.jackson.annotation.JsonAlias;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true) // ignora cualquier campo extra
 public class BookDTO {
+
+    private Long id;  // gutendexId o id
     private String title;
-    private List<AuthorDTO> authors;
-    private List<String> languages;
+    private String language;
+    private List<AuthorDTO> authors; // si manejas autores aquí
 
-    @JsonAlias("download_count") // por si el JSON tuviera snake_case
-    private Integer downloadCount;
+    public BookDTO() {
+        // Constructor vacío necesario para frameworks (Jackson, JPA, etc)
+    }
 
-    // Getters y setters
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
+    // Constructor con parámetros para facilitar creación
+    public BookDTO(String title, String language, Long id) {
+        this.title = title;
+        this.language = language;
+        this.id = id;
+    }
 
-    public List<AuthorDTO> getAuthors() { return authors; }
-    public void setAuthors(List<AuthorDTO> authors) { this.authors = authors; }
+    // Getters y Setters
 
-    public List<String> getLanguages() { return languages; }
-    public void setLanguages(List<String> languages) { this.languages = languages; }
+    public Long getId() {
+        return id;
+    }
 
-    public Integer getDownloadCount() { return downloadCount; }
-    public void setDownloadCount(Integer downloadCount) { this.downloadCount = downloadCount; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    // toString para imprimir
-    @Override
-    public String toString() {
-        return "BookDTO{" +
-                "title='" + title + '\'' +
-                ", authors=" + authors +
-                ", languages=" + languages +
-                ", downloadCount=" + downloadCount +
-                '}';
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    public List<AuthorDTO> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<AuthorDTO> authors) {
+        this.authors = authors;
     }
 }
